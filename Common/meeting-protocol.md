@@ -90,7 +90,17 @@ description: Создание стандартного или расширенн
 
 Обязательно дополнительно извлеки или уточни:
 
-1. **Детальную цель встречи**
+1. **Контекст / Предыстория**
+   - откуда взялась встреча
+   - что было до (предыдущие встречи, решения, документы)
+   - причина созыва
+
+2. **Кворум**
+   - кто присутствовал (фактически)
+   - кто должен был быть (по плану)
+   - кто отсутствовал и по какой причине (если известно)
+
+3. **Детальную цель встречи**
 - бизнес-контекст
 - проблема или возможность
 - ожидаемый результат встречи
@@ -459,7 +469,15 @@ question({
   <strong>Дата:</strong> ДД.ММ.ГГГГ<br/>
   <strong>Название:</strong> Название встречи<br/>
   <strong>Формат:</strong> Стандартный протокол<br/>
-  <strong>Участники:</strong> ФИО1, ФИО2, ФИО3
+</p>
+
+<h2>Контекст / Предыстория</h2>
+<p>Откуда взялась встреча, что было до (предыдущие встречи, решения, документы).</p>
+
+<h2>Кворум</h2>
+<p>
+  <strong>Присутствовали:</strong> ФИО1, ФИО2, ФИО3<br/>
+  <strong>Отсутствовали:</strong> ФИО4, ФИО5
 </p>
 
 <h2>Цель встречи</h2>
@@ -521,7 +539,20 @@ question({
   <strong>Дата:</strong> ДД.ММ.ГГГГ<br/>
   <strong>Название:</strong> Название встречи<br/>
   <strong>Формат:</strong> Расширенный протокол<br/>
-  <strong>Участники:</strong> ФИО1, ФИО2, ФИО3
+</p>
+
+<h2>Контекст / Предыстория</h2>
+<p>
+  <strong>Откуда взялась встреча:</strong> ...<br/>
+  <strong>Что было до:</strong> ...<br/>
+  <strong>Причина созыва:</strong> ...
+</p>
+
+<h2>Кворум</h2>
+<p>
+  <strong>Присутствовали:</strong> ФИО1, ФИО2, ФИО3<br/>
+  <strong>Отсутствовали (должны были быть):</strong> ФИО4, ФИО5<br/>
+  <strong>Причина отсутствия:</strong> ...
 </p>
 
 <h2>Цель встречи</h2>
@@ -558,12 +589,14 @@ question({
     <tr>
       <th class="highlight-green" data-highlight-colour="green">#</th>
       <th class="highlight-green" data-highlight-colour="green">Решение</th>
+      <th class="highlight-green" data-highlight-colour="green">Кто принял</th>
       <th class="highlight-green" data-highlight-colour="green">Обоснование</th>
       <th class="highlight-green" data-highlight-colour="green">Влияние</th>
     </tr>
     <tr>
       <th>1</th>
       <td>Описание решения...</td>
+      <td>ФИО</td>
       <td>Почему принято именно так...</td>
       <td>На что влияет...</td>
     </tr>
@@ -646,5 +679,64 @@ question({
   <li>Контрольная точка / follow-up 2...</li>
 </ul>
 
+<h2>Следующая встреча</h2>
+<table class="relative-table wrapped">
+  <tbody>
+    <tr>
+      <th class="highlight-blue" data-highlight-colour="blue">Дата</th>
+      <th class="highlight-blue" data-highlight-colour="blue">Организатор</th>
+      <th class="highlight-blue" data-highlight-colour="blue">Темы</th>
+      <th class="highlight-blue" data-highlight-colour="blue">Участники</th>
+    </tr>
+    <tr>
+      <td>ДД.ММ.ГГГГ</td>
+      <td>Фамилия И.О.</td>
+      <td>Тема 1, Тема 2...</td>
+      <td>ФИО1, ФИО2...</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2>Вне скоупа</h2>
+<p>Вопросы, которые обсудили, но намеренно отложили или вынесли за рамки данной встречи:</p>
+<table class="relative-table wrapped">
+  <tbody>
+    <tr>
+      <th class="highlight-gray" data-highlight-colour="gray">#</th>
+      <th class="highlight-gray" data-highlight-colour="gray">Вопрос</th>
+      <th class="highlight-gray" data-highlight-colour="gray">Причина отложения</th>
+      <th class="highlight-gray" data-highlight-colour="gray">Когда вернуться</th>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Описание вопроса...</td>
+      <td>Причина...</td>
+      <td>Следующая встреча / Отдельная встреча / Не определено</td>
+    </tr>
+  </tbody>
+</table>
+
 <h2>Резюме</h2>
 <p>Краткий итог встречи: что решили, что осталось открытым, какие ближайшие действия критичны.</p>
+
+<h2>Статус задач на момент рассылки</h2>
+<table class="relative-table wrapped">
+  <tbody>
+    <tr>
+      <th class="highlight-blue" data-highlight-colour="blue">Статус</th>
+      <th class="highlight-blue" data-highlight-colour="blue">Описание</th>
+    </tr>
+    <tr>
+      <td>Новая</td>
+      <td>Задача только поставлена, работа не начата</td>
+    </tr>
+    <tr>
+      <td>В работе</td>
+      <td>Задача принята в исполнение, ведётся работа</td>
+    </tr>
+    <tr>
+      <td>Выполнена</td>
+      <td>Задача завершена, результат получен</td>
+    </tr>
+  </tbody>
+</table>

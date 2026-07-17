@@ -15,6 +15,7 @@
 | 2026-07-17 | NevzoRRo | Загружены файлы скилла через upload (Add files via upload) |
 | 2026-07-17 | NevzoRRo | Удалена старая папка `meeting-protocol` (Delete meeting-protocol directory) |
 | 2026-07-17 | NevzoRRo | Merge PR #10 из ветки NevzoRRo/Nevzorov(met) |
+| 2026-07-17 | NevzoRRo | Рефакторинг: файлы скилла перемещены в `Common/Meeting-protocol/`, добавлен `README.md` папки, Merge PR #13 |
 
 ## 2026-07-16
 

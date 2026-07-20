@@ -4,10 +4,11 @@ This section contains skills, templates and documents applicable to **all roles*
 
 ## Contents
 
-| File                                                  | Description               |
-|-------------------------------------------------------|---------------------------|
-| [meeting-protocol.md](./meeting-protocol.md)          | Meeting Protocol template |
-| [rocket-chat-thread-summary.md](./rocket-chat-thread-summary.md) | Rocket.Chat thread summary |
+| File | Description |
+|------|-------------|
+| [AI-native development](./AI-native-development/) | Cross-role AI-native development research and practices |
+| [Meeting Protocol](./Meeting-protocol/) | Meeting protocol skill and templates |
+| [rocket-chat-thread-summary](./rocket-chat-thread-summary/) | Rocket.Chat thread summary |
 
 ## Topics Covered
 

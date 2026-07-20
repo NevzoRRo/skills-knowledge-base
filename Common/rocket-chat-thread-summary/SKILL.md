@@ -23,13 +23,11 @@ metadata:
 
 ### 1. Проверка доступа к Rocket.Chat
 
-Прочитать cookies из файла `C:\Users\Go-User\AppData\Local\Temp\opencode\rocket_chat_cookies.json`.
+Проверить наличие переменных окружения `ROCKET_CHAT_AUTH_TOKEN` и `ROCKET_CHAT_USER_ID`.
 
-Если файла нет или cookies истекли (401 ошибка) — запросить у пользователя новые cookies:
-- Формат: `rc_token` и `rc_uid`
-- Способ: попросить скопировать из DevTools браузера (F12 → Application → Cookies)
-
-После успешного получения сохранить cookies в файл.
+Если переменные не заданы — запросить у пользователя:
+- `ROCKET_CHAT_AUTH_TOKEN` — токен авторизации
+- `ROCKET_CHAT_USER_ID` — ваш пользовательский ID
 
 ### 2. Запрос ссылки на тред
 
@@ -41,26 +39,38 @@ metadata:
 Использовать REST API Rocket.Chat:
 
 ```python
+import os
 import requests
 import json
 import sys
 
-# Читаем cookies
-with open('C:\\Users\\Go-User\\AppData\\Local\\Temp\\opencode\\rocket_chat_cookies.json', 'r') as f:
-    cookies_data = json.load(f)
+AUTH_TOKEN = os.environ['ROCKET_CHAT_AUTH_TOKEN']
+USER_ID = os.environ['ROCKET_CHAT_USER_ID']
 
 session = requests.Session()
-session.cookies.update({
-    'rc_token': cookies_data['rc_token'],
-    'rc_uid': cookies_data['rc_uid'],
-})
 session.headers.update({
-    'X-Auth-Token': cookies_data['rc_token'],
-    'X-User-Id': cookies_data['rc_uid'],
+    'X-Auth-Token': AUTH_TOKEN,
+    'X-User-Id': USER_ID,
 })
 session.encoding = 'utf-8'
 
 RC_URL = 'https://rc.alfa-bank.net'
+
+def get_root_message(tmid: str) -> dict | None:
+    resp = session.get(
+        f'{RC_URL}/api/v1/chat.getMessage',
+        params={'msgId': tmid},
+    )
+    if resp.status_code == 200:
+        msg = resp.json().get('message', {})
+        return {
+            'author': msg['u']['name'],
+            'username': msg['u']['username'],
+            'text': msg.get('msg', ''),
+            'timestamp': msg['ts'],
+            'is_root': True,
+        }
+    return None
 
 def get_thread_messages(tmid: str, limit: int = 200) -> list[dict]:
     resp = session.get(
@@ -71,8 +81,11 @@ def get_thread_messages(tmid: str, limit: int = 200) -> list[dict]:
     return resp.json().get('messages', [])
 
 def extract_messages(tmid: str) -> list[dict]:
-    messages = get_thread_messages(tmid)
     result = []
+    root = get_root_message(tmid)
+    if root:
+        result.append(root)
+    messages = get_thread_messages(tmid)
     for m in messages:
         result.append({
             'author': m['u']['name'],
@@ -133,14 +146,7 @@ with open(r'C:\Users\Go-User\AppData\Local\Temp\opencode\thread_messages.txt', '
 5. **Недостаток данных** — если для выводов недостаточно информации, так и написать, приложив ключевые сообщения
 6. **UTF-8 кодировка** — API возвращает UTF-8, кириллица корректна в `resp.json()`. НЕ использовать `print()` для вывода русского текста — всегда записывать в файл с `encoding='utf-8'` и читать через Read tool
 
-## Файл cookies
+## Переменные окружения
 
-Путь: `C:\Users\Go-User\AppData\Local\Temp\opencode\rocket_chat_cookies.json`
-
-Формат:
-```json
-{
-  "rc_token": "токен_из_cookie_rc_token",
-  "rc_uid": "uid_из_cookie_rc_uid"
-}
-```
+- `ROCKET_CHAT_AUTH_TOKEN` — токен авторизации Rocket.Chat
+- `ROCKET_CHAT_USER_ID` — ID пользователя Rocket.Chat

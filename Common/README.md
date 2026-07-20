@@ -15,6 +15,7 @@ This section contains skills, templates and documents applicable to **all roles*
 - Communication
 - Meeting facilitation
 - Documentation standards
+- AI-assisted software development
 - Team collaboration
 - Time management
 - Reporting & presentations

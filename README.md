@@ -6,12 +6,15 @@
 
 ```
 skills-knowledge-base/
-├── Common/                    # Common skills for all roles
+├── Common/                         # Common materials for all roles
 │   ├── README.md
-│   └── meeting-protocol.md    # Meeting Protocol template
-├── PM/                        # Project Manager skills
+│   ├── AI-native-development/      # AI-native practices and research
+│   │   ├── README.md
+│   │   └── research/
+│   └── Meeting-protocol/           # Meeting Protocol skill
+├── PM/                             # Project Manager skills
 │   └── README.md
-└── Analyst/                   # Analyst skills
+└── Analyst/                        # Analyst skills
     └── README.md
 ```
 

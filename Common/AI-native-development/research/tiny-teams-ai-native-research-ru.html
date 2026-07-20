@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>Tiny Teams в AI-native разработке</title>
+<style>
+:root{--bg:#07111f;--panel:#0f1c30;--panel2:#14243d;--text:#eef5ff;--muted:#a9b8ce;--line:#273852;--blue:#77a8ff;--green:#66dfb5;--yellow:#ffd477;--red:#ff8998}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 90% 0,#183a69 0,transparent 28%),var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif;line-height:1.58}
+.wrap{width:min(1120px,calc(100% - 28px));margin:auto}header{padding:54px 0 30px}.pill{display:inline-block;padding:7px 11px;border:1px solid var(--line);border-radius:999px;color:var(--green);font-size:13px;background:#ffffff08}
+h1{font-size:clamp(36px,7vw,70px);line-height:1.02;letter-spacing:-.045em;margin:18px 0}.lead{font-size:clamp(18px,3vw,23px);color:var(--muted);max-width:900px}
+.hero{display:grid;grid-template-columns:1.35fr .65fr;gap:16px;margin-top:26px}.card{background:linear-gradient(145deg,#14243dea,#0b1729eb);border:1px solid var(--line);border-radius:20px;padding:22px;box-shadow:0 14px 40px #0005}
+.callout{font-size:clamp(22px,4vw,34px);font-weight:780;line-height:1.2}.accent{color:var(--green)}
+nav{position:sticky;top:0;z-index:5;overflow:auto;white-space:nowrap;background:#07111ee8;backdrop-filter:blur(12px);border-block:1px solid var(--line)}nav .wrap{display:flex;gap:6px;padding:9px 0}nav a{color:var(--muted);text-decoration:none;padding:9px 11px;border-radius:9px;font-size:14px}nav a:hover{background:#ffffff10;color:white}
+section{padding:46px 0 4px}h2{font-size:clamp(28px,5vw,43px);letter-spacing:-.03em;margin:0 0 18px}h3{margin:0 0 9px;font-size:21px}h4{margin:18px 0 6px;color:#cfe0ff}p{margin:0 0 14px}.muted{color:var(--muted)}.small{font-size:13px}.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}
+.good{border-left:4px solid var(--green)}.warn{border-left:4px solid var(--yellow)}.risk{border-left:4px solid var(--red)}.info{border-left:4px solid var(--blue)}
+.tag{display:inline-block;padding:5px 8px;margin:3px 3px 0 0;border-radius:7px;background:#77a8ff18;color:#cfe0ff;font-size:12px}.badge{font-weight:700;color:var(--yellow)}
+.diagram{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;white-space:pre-wrap;background:#050c16;border:1px solid var(--line);border-radius:16px;padding:18px;color:#cfe0ff;overflow:auto}
+table{width:100%;border-collapse:collapse}th,td{text-align:left;vertical-align:top;padding:13px;border-bottom:1px solid var(--line)}th{background:#ffffff08;color:#dce8ff}.scroll{overflow:auto;border:1px solid var(--line);border-radius:15px}
+ul{padding-left:20px;margin:7px 0}li{margin:6px 0}blockquote{margin:20px 0;padding:18px 20px;background:#77a8ff12;border-left:4px solid var(--blue);border-radius:0 14px 14px 0;font-size:20px}
+.rolehead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.roleid{font-size:12px;color:var(--green);border:1px solid var(--line);border-radius:999px;padding:5px 8px}
+.flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px}.flow .card{padding:15px;text-align:center}.arrow{text-align:center;color:var(--green);font-size:24px}
+.timeline{display:grid;gap:13px}.phase{display:grid;grid-template-columns:125px 1fr;gap:15px}.phase b{color:var(--green)}
+footer{padding:54px 0 80px;color:var(--muted)}
+@media(max-width:800px){.hero,.grid2,.grid3,.grid4,.flow{grid-template-columns:1fr}.phase{grid-template-columns:1fr;gap:3px}.card{padding:18px}.wrap{width:min(100% - 20px,1120px)}header{padding-top:34px}h1{font-size:41px}th,td{min-width:170px;padding:11px}}
+@media print{body{background:white;color:#111827}.card,.diagram{background:white;color:#111827;box-shadow:none}.muted{color:#4b5563}nav{display:none}.wrap{width:100%}a{color:#2457a6}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="pill">Концепция организационной трансформации • июль 2026</span>
+<h1>Tiny Teams в AI-native разработке</h1>
+<p class="lead">Целевая модель команд из двух человек, роли вокруг них, взаимодействие с PO и архитекторами, артефакты для AI-пайплайна и варианты перехода для системных аналитиков, C#- и SQL-разработчиков и ручных тестировщиков.</p>
+<div class="hero">
+<div class="card"><div class="callout">Tiny team — не «два универсальных сотрудника вместо всей команды», а <span class="accent">два владельца результата</span>, усиленные AI-пайплайном и общими инженерными платформами.</div></div>
+<div class="card"><h3>Ключевая оговорка</h3><p class="muted">Quality Engineer, Automation Engineer и AI Delivery — необязательно три человека в каждой tiny team. Чаще это shared-компетенции или роли на несколько команд.</p></div>
+</div></div></header>
+
+<nav><div class="wrap">
+<a href="#model">Модель</a><a href="#core">Две роли</a><a href="#shared">Shared-роли</a><a href="#artifacts">Артефакты</a><a href="#example">Пример</a><a href="#paths">Переход людей</a><a href="#choice">Выбор роли</a><a href="#interaction">Взаимодействие</a><a href="#pilot">Пилот</a>
+</div></nav>
+
+<main>
+<section id="model"><div class="wrap">
+<h2>1. Что именно предлагается</h2>
+<div class="grid2">
+<div class="card good"><h3>Ядро tiny team</h3><p><b>Business / Solution Engineer</b> + <b>Product Engineer</b>. Они совместно отвечают за результат от уточнения задачи до эксплуатации.</p></div>
+<div class="card info"><h3>Окружение команды</h3><p>PO, Product Manager, архитекторы, Quality Engineering, Automation Platform, Data Platform, DevSecOps и AI Delivery обслуживают несколько tiny teams.</p></div>
+</div>
+<div class="diagram">                         PRODUCT MANAGER
+                 стратегия, цели, метрики продукта
+                                │
+                                ▼
+                         PO / БИЗНЕС-ЗАКАЗЧИК
+              приоритет, бизнес-правила, приемка результата
+                                │
+              ┌─────────────────┴─────────────────┐
+              │          TINY TEAM (2)            │
+              │                                   │
+              │  Business/Solution  +  Product    │
+              │      Engineer          Engineer   │
+              └─────────────────┬─────────────────┘
+                                │
+                         AI DELIVERY PIPELINE
+      анализ → дизайн → код C#/SQL → тесты → проверки → PR → релиз
+                                │
+       ┌────────────── shared capabilities ──────────────┐
+       Architecture · Quality · Automation · Data · DevSecOps</div>
+<blockquote>Не стоит начинать трансформацию с переименования должностей. Сначала проверяется, может ли пара стабильно доводить ограниченный бизнес-инкремент до production при поддержке общих платформ.</blockquote>
+</div></section>
+
+<section id="core"><div class="wrap">
+<h2>2. Две основные роли tiny team</h2>
+<div class="grid2">
+<div class="card good">
+<div class="rolehead"><h3>Business / Solution Engineer</h3><span class="roleid">роль 1</span></div>
+<p><b>Цель:</b> превратить запрос PO в однозначный, проверяемый и реализуемый пакет контекста.</p>
+<h4>Что делает</h4><ul><li>Выясняет проблему, ожидаемый эффект и ограничения.</li><li>Моделирует бизнес-процесс, данные, состояния и исключения.</li><li>Формулирует правила, критерии приемки и примеры.</li><li>Совместно с Product Engineer выбирает границы решения.</li><li>Проверяет результаты агентов на смысловую корректность.</li><li>Проводит бизнес-приемку вместе с PO.</li></ul>
+<h4>За что отвечает</h4><p class="muted">Полнота контекста, отсутствие противоречий, трассируемость бизнес-цели до реализации, корректность поведения системы.</p>
+<h4>Кем может стать</h4><span class="tag">системный аналитик</span><span class="tag">сильный QA</span><span class="tag">бизнес-аналитик</span><span class="tag">технический PO</span>
+</div>
+<div class="card info">
+<div class="rolehead"><h3>Product Engineer</h3><span class="roleid">роль 2</span></div>
+<p><b>Цель:</b> обеспечить технически качественную поставку инкремента в production.</p>
+<h4>Что делает</h4><ul><li>Определяет технический дизайн и план реализации.</li><li>Оркестрирует генерацию C#, SQL, тестов и миграций.</li><li>Проверяет код, безопасность, производительность и эксплуатационность.</li><li>Интегрирует решение с платформой и внешними системами.</li><li>Отвечает за CI/CD, observability и release readiness.</li><li>Устраняет дефекты и улучшает технический контекст.</li></ul>
+<h4>За что отвечает</h4><p class="muted">Работоспособность, maintainability, архитектурная совместимость, безопасность, эксплуатация и технический результат.</p>
+<h4>Кем может стать</h4><span class="tag">C# developer</span><span class="tag">SQL developer</span><span class="tag">техничный аналитик</span><span class="tag">automation engineer</span>
+</div>
+</div>
+<h3 style="margin-top:22px">Варианты состава пары</h3>
+<div class="scroll"><table>
+<thead><tr><th>Тип задачи</th><th>Роль 1</th><th>Роль 2</th><th>Когда подходит</th></tr></thead>
+<tbody>
+<tr><td>Бизнес-функция и интеграции</td><td>Business Engineer</td><td>Product Engineer</td><td>Базовая рекомендуемая модель.</td></tr>
+<tr><td>Сложный backend / инфраструктура</td><td>Solution Engineer</td><td>Product Engineer</td><td>Много архитектуры, интеграций, технических ограничений.</td></tr>
+<tr><td>Data-heavy задача</td><td>Business/Data Analyst</td><td>Data Product Engineer</td><td>Расчёты, витрины, отчётность, миграции, качество данных.</td></tr>
+<tr><td>Рискованный клиентский сценарий</td><td>Business Engineer</td><td>Quality/Product Engineer</td><td>Критична корректность, много состояний и негативных сценариев.</td></tr>
+<tr><td>Платформенная возможность</td><td>Platform Product Engineer</td><td>Automation/AI Engineer</td><td>Команда создаёт инструменты для других tiny teams.</td></tr>
+</tbody></table></div>
+<p class="muted small">Следовательно, аналитик не обязан двигаться только в Business Engineer. Технический аналитик может стать Solution Engineer, Product Engineer, Quality Engineer или AI Delivery Engineer.</p>
+</div></section>
+
+<section id="shared"><div class="wrap">
+<h2>3. Нужны ли отдельные Quality, Automation и AI Delivery роли?</h2>
+<div class="grid3">
+<div class="card good"><h3>Quality Engineer</h3><p><b>Рекомендация: да, как shared-функция.</b></p><p class="muted">Не выполняет ручной регресс за команду. Проектирует стратегию качества, quality gates, риск-модель, production quality и правила тестирования.</p><h4>Пример работы</h4><p>Для заявки на открытие счёта определяет критичные риски: дублирование клиента, неверный статус KYC, потеря идемпотентности. Встраивает обязательные проверки в pipeline.</p></div>
+<div class="card info"><h3>Automation Engineer</h3><p><b>Рекомендация: да, но не в каждой паре.</b></p><p class="muted">Создаёт тестовую и delivery-платформу: шаблоны автотестов, тестовые данные, среды, service virtualization, CI-проверки и инструменты агентов.</p><h4>Пример работы</h4><p>Создаёт генератор API-тестов по OpenAPI, стандарт контрактных тестов и общий механизм поднятия stub Qort.</p></div>
+<div class="card warn"><h3>AI Delivery Engineer</h3><p><b>Рекомендация: сначала компетенция/экспериментальная роль.</b></p><p class="muted">Настраивает AI-пайплайн, агентные роли, источники контекста, evals, guardrails, метрики стоимости и качества.</p><h4>Пример работы</h4><p>Настраивает цепочку: анализ постановки → change plan → генерация → review → security checks, а также измеряет долю принятых без доработки изменений.</p></div>
+</div>
+<div class="card risk" style="margin-top:15px"><h3>Почему не «AI Delivery Manager»</h3><p>Для технического владельца пайплайна точнее название <b>AI Delivery Engineer</b> или <b>AI Platform Engineer</b>. Слово Manager уместно, когда человек управляет программой внедрения, бюджетом, рисками и несколькими командами. Тогда это <b>AI Transformation / Delivery Lead</b>, а не инженер внутри каждой команды.</p></div>
+</div></section>
+
+<section id="artifacts"><div class="wrap">
+<h2>4. Что tiny team передаёт в AI-пайплайн</h2>
+<p class="muted">Пайплайну нужны не длинные документы ради документов, а структурированный и версионируемый пакет контекста.</p>
+<div class="scroll"><table>
+<thead><tr><th>Артефакт</th><th>Владелец</th><th>Содержание</th><th>Что делает pipeline</th></tr></thead>
+<tbody>
+<tr><td><b>problem.md</b></td><td>PO + Business Engineer</td><td>Проблема, пользователи, эффект, границы.</td><td>Проверяет неполноту, предлагает вопросы и декомпозицию.</td></tr>
+<tr><td><b>business-rules.md</b></td><td>Business Engineer</td><td>Правила, таблицы решений, исключения, примеры.</td><td>Строит сценарии, проверки и основу доменной модели.</td></tr>
+<tr><td><b>acceptance.md</b></td><td>Business Engineer + PO</td><td>Проверяемые критерии и ключевые примеры.</td><td>Генерирует acceptance/API/UI-тесты.</td></tr>
+<tr><td><b>domain-context.md</b></td><td>Solution/Product Engineer</td><td>Термины, сущности, состояния, события, ограничения.</td><td>Предлагает изменения моделей и контрактов.</td></tr>
+<tr><td><b>change-plan.md</b></td><td>Product Engineer</td><td>Репозитории, компоненты, миграции, порядок изменений.</td><td>Планирует и выполняет безопасные атомарные изменения.</td></tr>
+<tr><td><b>contracts/</b></td><td>Оба</td><td>OpenAPI, AsyncAPI, схемы сообщений, SQL-контракты.</td><td>Генерирует код, mocks и контрактные тесты.</td></tr>
+<tr><td><b>quality-risks.md</b></td><td>Tiny team + QE</td><td>Риски, критичность, обязательные проверки.</td><td>Выбирает тестовые техники и quality gates.</td></tr>
+<tr><td><b>adr/</b></td><td>Product Engineer + архитектор</td><td>Нетиповые решения, альтернативы и последствия.</td><td>Соблюдает принятые ограничения и обновляет ссылки.</td></tr>
+<tr><td><b>release.md</b></td><td>Product Engineer</td><td>Флаги, миграции, rollback, мониторинг, support.</td><td>Готовит pipeline выпуска и проверки после релиза.</td></tr>
+<tr><td><b>decision-log.md</b></td><td>Оба</td><td>Бизнес- и технические решения с причинами.</td><td>Не повторяет закрытые вопросы и выявляет конфликты.</td></tr>
+</tbody></table></div>
+<div class="card info" style="margin-top:15px"><h3>Definition of Ready для pipeline</h3><p>Понятна бизнес-цель; определены границы; приведены примеры; описаны критичные риски; известны затрагиваемые системы; зафиксированы ограничения по данным и безопасности; назначены владельцы решений; pipeline может проверить результат автоматически.</p></div>
+</div></section>
+
+<section id="example"><div class="wrap">
+<h2>5. Пример работы: новая операция в инвестиционном приложении</h2>
+<div class="flow">
+<div class="card"><b>1. PO</b><p class="small muted">Формулирует бизнес-потребность и приоритет.</p></div>
+<div class="card"><b>2. Business Engineer</b><p class="small muted">Правила, статусы, ошибки, acceptance.</p></div>
+<div class="card"><b>3. Product Engineer</b><p class="small muted">Change plan, API, данные, интеграции.</p></div>
+<div class="card"><b>4. AI Pipeline</b><p class="small muted">C#, SQL, тесты, docs, PR.</p></div>
+<div class="card"><b>5. Humans</b><p class="small muted">Review, риск-проверка, приемка, релиз.</p></div>
+</div>
+<h3 style="margin-top:22px">Как участвуют shared-роли</h3>
+<div class="grid3">
+<div class="card"><h3>Архитектор</h3><p class="muted">Подтверждает изменение границ домена и новый интеграционный паттерн; типовые решения не согласует вручную.</p></div>
+<div class="card"><h3>Quality Engineer</h3><p class="muted">Добавляет проверки идемпотентности, повторной доставки и сверки расчётов; не выполняет весь тест-план вручную.</p></div>
+<div class="card"><h3>Automation / AI Platform</h3><p class="muted">Даёт stub внешней системы, шаблон контрактных тестов и агента для анализа миграций.</p></div>
+</div>
+</div></section>
+
+<section id="paths"><div class="wrap">
+<h2>6. Куда двигаться нынешним специалистам</h2>
+<div class="scroll"><table>
+<thead><tr><th>Текущая роль</th><th>Наиболее естественные траектории</th><th>Что начать делать сейчас</th></tr></thead>
+<tbody>
+<tr><td><b>Системный аналитик</b></td><td>Business Engineer; Solution Engineer; Quality Engineer; Product Engineer; AI Delivery Engineer; Delivery Lead.</td><td>Работать с Git-документацией, executable specifications, API/SQL, DDD, тестами, архитектурой и AI-агентами. Брать ответственность не за документ, а за поставленный сценарий.</td></tr>
+<tr><td><b>C# разработчик</b></td><td>Product Engineer; Platform Engineer; Solution Architect; Automation Engineer; AI Delivery Engineer.</td><td>Освоить AI-assisted delivery, архитектурные решения, security, observability, инфраструктуру, contract testing и review сгенерированного кода.</td></tr>
+<tr><td><b>SQL разработчик</b></td><td>Data Product Engineer; Data Platform Engineer; Product Engineer; Database Reliability Engineer; AI Delivery Engineer.</td><td>Сместиться от написания запросов к моделям данных, миграциям, производительности, data contracts, quality, lineage и автоматическим проверкам SQL.</td></tr>
+<tr><td><b>Мануальный тестировщик</b></td><td>Quality Engineer; Business Engineer; Automation Engineer; Product Engineer; Production Quality / Observability.</td><td>Перестать измерять ценность количеством ручных кейсов. Осваивать API, SQL, Git, автотесты, риск-ориентированное тестирование, observability и анализ требований.</td></tr>
+</tbody></table></div>
+
+<h3 style="margin-top:22px">Особенно для ручных тестировщиков</h3>
+<div class="grid3">
+<div class="card good"><h3>Quality Engineer</h3><p>Подходит тем, кому нравится находить системные риски, причины дефектов, проектировать проверки и улучшать процесс поставки.</p></div>
+<div class="card info"><h3>Business Engineer</h3><p>Подходит тем, кто хорошо знает продукт, видит пограничные сценарии и любит уточнять поведение с бизнесом.</p></div>
+<div class="card warn"><h3>Automation/Product Engineer</h3><p>Подходит тем, кому интересны код, API, CI/CD, инструменты и самостоятельная техническая реализация.</p></div>
+</div>
+</div></section>
+
+<section id="choice"><div class="wrap">
+<h2>7. Как человеку понять, какая роль ближе</h2>
+<div class="grid2">
+<div class="card"><h3>Business / Solution Engineer</h3><p>Нравится разбираться «что и зачем», задавать вопросы, моделировать процессы и данные, устранять неоднозначность.</p></div>
+<div class="card"><h3>Product Engineer</h3><p>Нравится создавать решение целиком, принимать технические компромиссы, писать и проверять код, отвечать за production.</p></div>
+<div class="card"><h3>Quality Engineer</h3><p>Нравится находить риски, исследовать причины сбоев, строить систему профилактики дефектов и измерять качество.</p></div>
+<div class="card"><h3>Automation / Platform Engineer</h3><p>Нравится превращать повторяемую работу в инструменты, шаблоны, платформы и self-service.</p></div>
+<div class="card"><h3>AI Delivery Engineer</h3><p>Нравится экспериментировать с агентами, контекстом, evals и workflow, измерять качество AI-генерации.</p></div>
+<div class="card"><h3>Delivery Lead</h3><p>Нравится управлять зависимостями и неопределённостью, договариваться, организовывать несколько команд и отвечать за срок.</p></div>
+</div>
+<div class="card good" style="margin-top:15px"><h3>Практический способ выбора</h3><p>Дать каждому сотруднику 2–3 мини-ротации по 4–6 недель: подготовка context package, реализация вертикального среза, проектирование quality gates или настройка pipeline. Оценивать энергию человека, качество решений, скорость обучения и способность брать ответственность — не только текущие знания.</p></div>
+</div></section>
+
+<section id="interaction"><div class="wrap">
+<h2>8. Взаимодействие с PO, Product Manager и архитекторами</h2>
+<div class="scroll"><table>
+<thead><tr><th>Роль</th><th>Что остаётся за ней</th><th>Что не должна делать вместо tiny team</th></tr></thead>
+<tbody>
+<tr><td><b>Product Manager</b></td><td>Стратегия, сегменты, продуктовые цели, метрики, экономика, общий roadmap.</td><td>Детализировать каждую историю и ежедневно управлять реализацией.</td></tr>
+<tr><td><b>PO — бизнес-заказчик</b></td><td>Приоритет, бизнес-правила, ограничения, доступ к экспертам, принятие бизнес-результата.</td><td>Писать техническую постановку, управлять агентами или выбирать архитектуру.</td></tr>
+<tr><td><b>Tiny team</b></td><td>Полный цикл поставки конкретного outcome: уточнение, дизайн, реализация, качество, релиз.</td><td>Самостоятельно менять продуктовую стратегию или корпоративные архитектурные стандарты.</td></tr>
+<tr><td><b>Доменный/solution-архитектор</b></td><td>Границы доменов, принципы, reference architecture, сложные ADR, эволюция систем.</td><td>Ревьюить каждую строку и становиться очередью согласования.</td></tr>
+<tr><td><b>Enterprise-архитектура</b></td><td>Целевая архитектура, портфель систем, общие ограничения и стратегические решения.</td><td>Проектировать локальную реализацию каждого инкремента.</td></tr>
+<tr><td><b>Delivery / Program Lead</b></td><td>Межкомандные зависимости, milestones, внешние поставщики, риски программы, эскалации.</td><td>Собирать ежедневные статусы вручную и распределять мелкие задачи внутри пары.</td></tr>
+</tbody></table></div>
+<h3 style="margin-top:22px">Рекомендуемый ритм</h3>
+<ul><li><b>Outcome kickoff:</b> PO + tiny team + при необходимости архитектор/QE.</li><li><b>Короткие decision-сессии:</b> только по открытым вопросам, решения сразу попадают в Git.</li><li><b>Асинхронная прозрачность:</b> pipeline публикует статус, риски, тесты и изменения автоматически.</li><li><b>Demo/acceptance:</b> PO принимает бизнес-поведение, Product Engineer — техническую готовность.</li><li><b>Program sync:</b> Delivery Lead работает с зависимостями между командами, а не с микрозадачами.</li></ul>
+</div></section>
+
+<section id="pilot"><div class="wrap">
+<h2>9. Как безопасно провести пилот</h2>
+<div class="timeline">
+<div class="card phase"><b>Шаг 1<br>4–6 недель</b><div><h3>Copilot-режим</h3><p>Существующая команда сохраняется. Ввести Git-based context package, AI-подготовку планов, кода и тестов. Измерить baseline.</p></div></div>
+<div class="card phase"><b>Шаг 2<br>6–8 недель</b><div><h3>Вертикальные пары</h3><p>Сформировать 2–3 пары с разным составом и дать им небольшие независимые инкременты. Shared QA/архитектура пока страхуют.</p></div></div>
+<div class="card phase"><b>Шаг 3<br>8–12 недель</b><div><h3>Pipeline-режим</h3><p>Стандартизировать артефакты, автоматические quality gates и агентный workflow. Уменьшать ручные передачи между специализациями.</p></div></div>
+<div class="card phase"><b>Шаг 4</b><div><h3>Решение по структуре</h3><p>Только после фактов определить, какие роли нужны постоянно, какие shared, а какие остаются компетенциями внутри Product Engineer.</p></div></div>
+</div>
+
+<h3 style="margin-top:22px">Метрики пилота</h3>
+<div class="grid4">
+<div class="card"><h3>Flow</h3><p class="muted">Lead time, время ожидания, число handoff.</p></div>
+<div class="card"><h3>Quality</h3><p class="muted">escaped defects, rollback, повторные открытия.</p></div>
+<div class="card"><h3>AI</h3><p class="muted">acceptance rate, rework, стоимость, ошибки.</p></div>
+<div class="card"><h3>People</h3><p class="muted">нагрузка, обучение, bus factor, удовлетворённость.</p></div>
+</div>
+<div class="card risk" style="margin-top:15px"><h3>Стоп-сигналы</h3><p>Пара зависит от скрытой ручной работы shared-специалистов; скорость выросла, но production-дефекты увеличились; решения не трассируются; архитекторы стали bottleneck; сотрудники формально сменили названия ролей, но сохранили старые handoff; AI используется без контроля данных и evals.</p></div>
+</div></section>
+
+<section><div class="wrap">
+<h2>10. Что является фактом, а что гипотезой</h2>
+<div class="grid3">
+<div class="card good"><h3>Высокая уверенность</h3><p class="muted">ИИ автоматизирует существенную часть анализа, кодирования, тестирования и отчётности; ценность смещается к техническому контексту, критическому мышлению, качеству платформы и принятию решений.</p></div>
+<div class="card warn"><h3>Средняя уверенность</h3><p class="muted">Размер продуктовых команд будет уменьшаться, специалисты станут более универсальными, а platform/shared capabilities — важнее.</p></div>
+<div class="card risk"><h3>Гипотеза модели</h3><p class="muted">Оптимальное ядро всегда состоит именно из двух человек; названия Business Engineer и Product Engineer закрепятся; AI Delivery станет отдельной массовой должностью.</p></div>
+</div>
+</div></section>
+
+<section id="sources"><div class="wrap">
+<h2>Источники и основания</h2>
+<div class="card">
+<ul>
+<li><a href="https://www.microsoft.com/en-us/worklab/work-trend-index/2025-the-year-the-frontier-firm-is-born">Microsoft Work Trend Index 2025</a> — гибридные команды людей и агентов, новая роль управления AI-workforce.</li>
+<li><a href="https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization">Microsoft Work Trend Index 2026</a> — роль менеджеров, практики экспериментов и готовность сотрудников к агентному ИИ.</li>
+<li><a href="https://www.thoughtworks.com/en-de/insights/reports/the-2025-dora-report">DORA Report 2025 / Thoughtworks</a> — ИИ как усилитель системы delivery; важность инженерной среды и измерения результата.</li>
+<li><a href="https://www.thoughtworks.com/en-us/radar/techniques/ai-team-assistants">Thoughtworks Technology Radar: AI team assistants</a> — ИИ на уровне команды, а не только индивидуального помощника.</li>
+<li><a href="https://www.thoughtworks.com/insights/blog/engineering-effectiveness/unlocking-innovation-through-modern-application-development">Thoughtworks: modern application development</a> — AI-native mindset, platform engineering, embedded security.</li>
+<li><a href="https://www.pmi.org/learning/ai-in-project-management">PMI: AI in Project Management</a> — переход от тактического управления к стратегическому эффекту.</li>
+<li><a href="https://www.weforum.org/publications/the-future-of-jobs-report-2025/">World Economic Forum: Future of Jobs 2025</a> — рост значимости AI, технологической грамотности, аналитического мышления и адаптивности.</li>
+</ul>
+<p class="small muted">Конкретная организационная схема tiny teams, названия ролей и состав артефактов — авторская целевая модель для пилота, выведенная из указанных тенденций и контекста компании. Она требует проверки на реальных командах.</p>
+</div>
+<p class="small muted" style="margin-top:16px">На iPhone: откройте файл → «Поделиться» → «Сохранить в Файлы». Для сохранения в PDF: «Поделиться» → «Печать» → раздвинуть превью двумя пальцами → «Поделиться» → «Сохранить в Файлы».</p>
+</div></section>
+</main>
+<footer><div class="wrap">Tiny Teams в AI-native разработке • материал для внутреннего обсуждения и проектирования пилота</div></footer>
+</body></html>

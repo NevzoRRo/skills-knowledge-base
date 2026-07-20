@@ -23,11 +23,13 @@ metadata:
 
 ### 1. Проверка доступа к Rocket.Chat
 
-Проверить наличие переменных окружения `ROCKET_CHAT_AUTH_TOKEN` и `ROCKET_CHAT_USER_ID`.
+Прочитать cookies из файла `C:\Users\Go-User\AppData\Local\Temp\opencode\rocket_chat_cookies.json`.
 
-Если переменные не заданы — запросить у пользователя:
-- `ROCKET_CHAT_AUTH_TOKEN` — токен авторизации
-- `ROCKET_CHAT_USER_ID` — ваш пользовательский ID
+Если файла нет или cookies истекли (401 ошибка) — запросить у пользователя новые cookies:
+- Формат: `rc_token` и `rc_uid`
+- Способ: попросить скопировать из DevTools браузера (F12 → Application → Cookies)
+
+После успешного получения сохранить cookies в файл.
 
 ### 2. Запрос ссылки на тред
 
@@ -39,18 +41,22 @@ metadata:
 Использовать REST API Rocket.Chat:
 
 ```python
-import os
 import requests
 import json
 import sys
 
-AUTH_TOKEN = os.environ['ROCKET_CHAT_AUTH_TOKEN']
-USER_ID = os.environ['ROCKET_CHAT_USER_ID']
+# Читаем cookies
+with open('C:\\Users\\Go-User\\AppData\\Local\\Temp\\opencode\\rocket_chat_cookies.json', 'r') as f:
+    cookies_data = json.load(f)
 
 session = requests.Session()
+session.cookies.update({
+    'rc_token': cookies_data['rc_token'],
+    'rc_uid': cookies_data['rc_uid'],
+})
 session.headers.update({
-    'X-Auth-Token': AUTH_TOKEN,
-    'X-User-Id': USER_ID,
+    'X-Auth-Token': cookies_data['rc_token'],
+    'X-User-Id': cookies_data['rc_uid'],
 })
 session.encoding = 'utf-8'
 
@@ -146,7 +152,14 @@ with open(r'C:\Users\Go-User\AppData\Local\Temp\opencode\thread_messages.txt', '
 5. **Недостаток данных** — если для выводов недостаточно информации, так и написать, приложив ключевые сообщения
 6. **UTF-8 кодировка** — API возвращает UTF-8, кириллица корректна в `resp.json()`. НЕ использовать `print()` для вывода русского текста — всегда записывать в файл с `encoding='utf-8'` и читать через Read tool
 
-## Переменные окружения
+## Файл cookies
 
-- `ROCKET_CHAT_AUTH_TOKEN` — токен авторизации Rocket.Chat
-- `ROCKET_CHAT_USER_ID` — ID пользователя Rocket.Chat
+Путь: `C:\Users\Go-User\AppData\Local\Temp\opencode\rocket_chat_cookies.json`
+
+Формат:
+```json
+{
+  "rc_token": "токен_из_cookie_rc_token",
+  "rc_uid": "uid_из_cookie_rc_uid"
+}
+```

@@ -7,7 +7,7 @@ description: >
 license: MIT
 compatibility: opencode
 metadata:
-  version: 1.1
+  version: 1.2
   rocket_chat_url: https://rc.alfa-bank.net
 ---
 
@@ -62,21 +62,25 @@ session.encoding = 'utf-8'
 
 RC_URL = 'https://rc.alfa-bank.net'
 
-def get_root_message(tmid: str) -> dict | None:
+def get_root_message(tmid: str) -> dict:
     resp = session.get(
         f'{RC_URL}/api/v1/chat.getMessage',
         params={'msgId': tmid},
+        timeout=30,
     )
-    if resp.status_code == 200:
-        msg = resp.json().get('message', {})
-        return {
-            'author': msg['u']['name'],
-            'username': msg['u']['username'],
-            'text': msg.get('msg', ''),
-            'timestamp': msg['ts'],
-            'is_root': True,
-        }
-    return None
+    resp.raise_for_status()
+
+    msg = resp.json().get('message')
+    if not msg:
+        raise ValueError('Rocket.Chat не вернул корневое сообщение треда')
+
+    return {
+        'author': msg['u']['name'],
+        'username': msg['u']['username'],
+        'text': msg.get('msg', ''),
+        'timestamp': msg['ts'],
+        'is_root': True,
+    }
 
 def get_thread_messages(tmid: str, limit: int = 200) -> list[dict]:
     resp = session.get(
@@ -89,8 +93,7 @@ def get_thread_messages(tmid: str, limit: int = 200) -> list[dict]:
 def extract_messages(tmid: str) -> list[dict]:
     result = []
     root = get_root_message(tmid)
-    if root:
-        result.append(root)
+    result.append(root)
     messages = get_thread_messages(tmid)
     for m in messages:
         result.append({
@@ -151,6 +154,7 @@ with open(r'C:\Users\Go-User\AppData\Local\Temp\opencode\thread_messages.txt', '
 4. **Без времени** — не указывать временные метки сообщений, только хронологический порядок
 5. **Недостаток данных** — если для выводов недостаточно информации, так и написать, приложив ключевые сообщения
 6. **UTF-8 кодировка** — API возвращает UTF-8, кириллица корректна в `resp.json()`. НЕ использовать `print()` для вывода русского текста — всегда записывать в файл с `encoding='utf-8'` и читать через Read tool
+7. **Полнота контекста** — если корневое сообщение треда не получено (ошибка API), операция завершается с явной ошибкой; саммари не строится на неполных данных
 
 ## Файл cookies
 

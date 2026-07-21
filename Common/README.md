@@ -8,6 +8,7 @@ This section contains skills, templates and documents applicable to **all roles*
 |------|-------------|
 | [AI-native development](./AI-native-development/) | Cross-role AI-native development research and practices |
 | [Meeting Protocol](./Meeting-protocol/) | Meeting protocol skill and templates |
+| [rocket-chat-thread-summary](./rocket-chat-thread-summary/) | Rocket.Chat thread summary |
 
 ## Topics Covered
 

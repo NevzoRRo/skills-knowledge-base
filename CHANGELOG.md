@@ -1,5 +1,11 @@
 # Changelog
 
+## [2026-07-21] — Добавление скилла rocket-chat-thread-summary
+
+### Добавлено
+
+- **Скилл `rocket-chat-thread-summary`** (`Common/rocket-chat-thread-summary/`) — формирует структурированное саммари треда Rocket.Chat по ссылке: выводы, open questions, сроки. Запуск: `/rocket-chat-thread-summary`. Версия 1.2.
+
 ## [2026-07-20] — Исследование Tiny Teams для AI-native разработки
 
 ### Добавлено

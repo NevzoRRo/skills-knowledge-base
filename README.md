@@ -6,31 +6,16 @@
 
 ```
 skills-knowledge-base/
-├── Common/                    # Common skills for all roles
+├── Common/                         # Common materials for all roles
 │   ├── README.md
-│   ├── Meeting-protocol/      # Meeting Protocol skill for opencode
-│   │   ├── SKILL.md
-│   │   ├── corrections.json
-│   │   └── README.md
-├── PM/                        # Project Manager skills
+│   ├── AI-native-development/      # AI-native practices and research
+│   │   ├── README.md
+│   │   └── research/
+│   └── Meeting-protocol/           # Meeting Protocol skill
+├── PM/                             # Project Manager skills
 │   └── README.md
-├── Analyst/                   # Analyst skills
-│   └── README.md
-├── setup-skill-links.ps1      # Script to create junction links for opencode
-└── CHANGELOG.md
-```
-
-## Setup
-
-After cloning, run this script in PowerShell (as admin) to register skills with opencode:
-
-```powershell
-.\setup-skill-links.ps1
-```
-
-To remove links:
-```powershell
-.\setup-skill-links.ps1 -Remove
+└── Analyst/                        # Analyst skills
+    └── README.md
 ```
 
 ## Sections
